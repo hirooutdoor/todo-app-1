@@ -1,7 +1,13 @@
-.container
-  = render 'commons/tabs'
-  - articles.each do |article|
-    = render 'commons/article', article: article
-  = link_to new_article_path do
-    .float_btn
-      %i.fa.fa-plus
+= link_to board_path(board) do
+  .card
+    - if board.eyecatch.attached?
+      .card_image
+        = image_tag board.eyecatch
+    .card_content
+      .card_title
+        = board.title
+      .card_detail
+        = image_tag board.user.avatar_image
+        %div
+          %p= board.author_name
+          %p= board.display_created_at
